@@ -111,7 +111,7 @@ const rules: KarabinerRules[] = [
         ],
       },
       {
-        description: "change f9 to fastforward",
+        description: "change f9 to fastforward (only when hyper is NOT held)",
         type: "basic",
         from: {
           key_code: "f9",
@@ -120,6 +120,32 @@ const rules: KarabinerRules[] = [
           {
             key_code: "fastforward",
           },
+        ],
+        conditions: [
+          {
+            type: "variable_unless",
+            name: "hyper",
+            value: 1
+          }
+        ],
+      },
+      {
+        description: "f9 stays f9 when hyper is held",
+        type: "basic",
+        from: {
+          key_code: "f9",
+        },
+        to: [
+          {
+            key_code: "f9",
+          },
+        ],
+        conditions: [
+          {
+            type: "variable_if",
+            name: "hyper",
+            value: 1
+          }
         ],
       },
       // {
@@ -158,7 +184,7 @@ const rules: KarabinerRules[] = [
     // o = "Open" applications
     o: {
       // "b" for browser
-      b: app("Zen Browser"),
+      b: app("Zen"),
       v: app("Visual Studio Code"),
       d: app("Discord"),
       f: app("Figma"),
@@ -166,12 +192,16 @@ const rules: KarabinerRules[] = [
       h: app("ChatGPT"),
       t: app("AyuGram"),
       s: app("Spotify"),
+      x: app("Nuage"),
       // "C" for cli
       c: app("Ghostty"),
-      g: app("GitHub Desktop"),
+      // g: app("GitHub Desktop"),
       w: app("WhatsApp"),
       e: app("Finder"),
-      comma: app("System Settings")
+      // "P" for password
+      p: app("Bitwarden"),
+      comma: app("System Settings"),
+      grave_accent_and_tilde: app("Activity Monitor")
     },
 
     // TODO: This doesn't quite work yet.
@@ -385,6 +415,7 @@ const rules: KarabinerRules[] = [
     },
 
     // c = Capture using shortcuts assigned in shottr
+    // c = Musi"c"
     c: {
       s: {
         description: "Fullscreen",
@@ -422,7 +453,17 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
-      o: app("Shottr")
+      o: app("Shottr"),
+      p: {
+        to: [{ key_code: "play_or_pause" }]
+      },
+      b: {
+        to: [{ key_code: "rewind" }]
+      },
+      n: {
+        to: [{ key_code: "fastforward" }]
+      },
+      l: open("raycast://extensions/mattisssa/spotify-player/like?launchType=background")
     },
 
     // r = "Raycast"
@@ -479,6 +520,30 @@ const rules: KarabinerRules[] = [
             type: "variable_if",
             name: "hyper",
             value: 1,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "Change Slach to Spacebar when GD is focused",
+    manipulators: [
+      {
+        type: "basic",
+        from: {
+          key_code: "slash",
+        },
+        to: [
+          {
+            key_code: "spacebar",
+          },
+        ],
+        conditions: [
+          {
+            type: "frontmost_application_if",
+            file_paths: [
+              "/Applications/Geometry Dash.app",
+            ],
           },
         ],
       },

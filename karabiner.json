@@ -116,7 +116,7 @@
                 ]
               },
               {
-                "description": "change f9 to fastforward",
+                "description": "change f9 to fastforward (only when hyper is NOT held)",
                 "type": "basic",
                 "from": {
                   "key_code": "f9"
@@ -124,6 +124,32 @@
                 "to": [
                   {
                     "key_code": "fastforward"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_unless",
+                    "name": "hyper",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "f9 stays f9 when hyper is held",
+                "type": "basic",
+                "from": {
+                  "key_code": "f9"
+                },
+                "to": [
+                  {
+                    "key_code": "f9"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 1
                   }
                 ]
               }
@@ -200,10 +226,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Zen Browser.app'"
+                    "shell_command": "open -a 'Zen.app'"
                   }
                 ],
-                "description": "Open -a 'Zen Browser.app'",
+                "description": "Open -a 'Zen.app'",
                 "type": "basic",
                 "from": {
                   "key_code": "b",
@@ -368,13 +394,13 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Ghostty.app'"
+                    "shell_command": "open -a 'Nuage.app'"
                   }
                 ],
-                "description": "Open -a 'Ghostty.app'",
+                "description": "Open -a 'Nuage.app'",
                 "type": "basic",
                 "from": {
-                  "key_code": "c",
+                  "key_code": "x",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -392,13 +418,13 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'GitHub Desktop.app'"
+                    "shell_command": "open -a 'Ghostty.app'"
                   }
                 ],
-                "description": "Open -a 'GitHub Desktop.app'",
+                "description": "Open -a 'Ghostty.app'",
                 "type": "basic",
                 "from": {
-                  "key_code": "g",
+                  "key_code": "c",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -464,6 +490,30 @@
               {
                 "to": [
                   {
+                    "shell_command": "open -a 'Bitwarden.app'"
+                  }
+                ],
+                "description": "Open -a 'Bitwarden.app'",
+                "type": "basic",
+                "from": {
+                  "key_code": "p",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_o",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
                     "shell_command": "open -a 'System Settings.app'"
                   }
                 ],
@@ -471,6 +521,30 @@
                 "type": "basic",
                 "from": {
                   "key_code": "comma",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_o",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open -a 'Activity Monitor.app'"
+                  }
+                ],
+                "description": "Open -a 'Activity Monitor.app'",
+                "type": "basic",
+                "from": {
+                  "key_code": "grave_accent_and_tilde",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -2063,6 +2137,99 @@
                     "value": 1
                   }
                 ]
+              },
+              {
+                "to": [
+                  {
+                    "key_code": "play_or_pause"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "p",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_c",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "key_code": "rewind"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "b",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_c",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "key_code": "fastforward"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_c",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open raycast://extensions/mattisssa/spotify-player/like?launchType=background"
+                  }
+                ],
+                "description": "Open raycast://extensions/mattisssa/spotify-player/like?launchType=background",
+                "type": "basic",
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_c",
+                    "value": 1
+                  }
+                ]
               }
             ]
           },
@@ -2258,6 +2425,30 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Change Slach to Spacebar when GD is focused",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "slash"
+                },
+                "to": [
+                  {
+                    "key_code": "spacebar"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "file_paths": [
+                      "/Applications/Geometry Dash.app"
+                    ]
                   }
                 ]
               }
