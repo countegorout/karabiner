@@ -473,7 +473,10 @@ const rules: KarabinerRules[] = [
       n: {
         to: [{ key_code: "fastforward" }]
       },
-      l: open("raycast://extensions/mattisssa/spotify-player/like?launchType=background")
+      // like now playing song in spotify
+      l: open("raycast://extensions/mattisssa/spotify-player/like?launchType=background"),
+      // change spotify output device
+      comma: open("raycast://extensions/mattisssa/spotify-player/devices"),
     },
 
     // r = "Raycast"
