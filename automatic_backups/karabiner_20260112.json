@@ -346,10 +346,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Gemini Desktop.app'"
+                    "shell_command": "open -a 'ChatGPT.app'"
                   }
                 ],
-                "description": "Open -a 'Gemini Desktop.app'",
+                "description": "Open -a 'ChatGPT.app'",
                 "type": "basic",
                 "from": {
                   "key_code": "h",

@@ -555,7 +555,7 @@ const rules: KarabinerRules[] = [
           {
             type: "frontmost_application_if",
             file_paths: [
-              "/Applications/Geometry Dash.app",
+              "/Users/hanishiryuu/Library/Application Support/Steam/steamapps/common/Geometry Dash/Geometry Dash.app",
             ],
           },
         ],
