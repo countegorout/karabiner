@@ -453,6 +453,16 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
+      // capture active window
+      w: {
+        description: 'Active window',
+        to: [
+          {
+            key_code: "1",
+            modifiers: ["left_command", "left_shift", "left_option"],
+          },
+        ],
+      },
       o: app("Shottr"),
       p: {
         to: [{ key_code: "play_or_pause" }]
