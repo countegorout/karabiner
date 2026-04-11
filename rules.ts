@@ -87,6 +87,33 @@ const rules: KarabinerRules[] = [
         ],
       },
       {
+        description: "Map left_option → left_command on Monsgeek (when pressed alone)",
+        type: "basic",
+        from: {
+          key_code: "left_option",
+          modifiers: {
+            optional: ["any"]
+          }
+        },
+        to: [
+          {
+            key_code: "left_command"
+          }
+        ],
+        conditions: [
+          {
+            type: "device_if",
+            identifiers: [
+              {
+                vendor_id: 12625,
+                product_id: 16400,
+                is_keyboard: true
+              }
+            ]
+          }
+        ]
+      },
+      {
         description: "change f7 to rewind",
         type: "basic",
         from: {
@@ -185,12 +212,13 @@ const rules: KarabinerRules[] = [
     o: {
       // "b" for browser
       b: app("Zen"),
+      n: app("Firefox Developer Edition"),
       v: app("Visual Studio Code"),
       d: app("Discord"),
       f: app("Figma"),
       // "h" for help ;(
-      h: app("Gemini Desktop"),
-      t: app("AyuGram"),
+      h: app("ChatGPT"),
+      t: app("Telegram"),
       s: app("Spotify"),
       x: app("Nuage"),
       // "C" for cli
@@ -464,9 +492,6 @@ const rules: KarabinerRules[] = [
         ],
       },
       o: app("Shottr"),
-      p: {
-        to: [{ key_code: "play_or_pause" }]
-      },
       b: {
         to: [{ key_code: "rewind" }]
       },
@@ -477,6 +502,8 @@ const rules: KarabinerRules[] = [
       l: open("raycast://extensions/mattisssa/spotify-player/like?launchType=background"),
       // change spotify output device
       comma: open("raycast://extensions/mattisssa/spotify-player/devices"),
+      // toggle play/pause in spotify
+      p: open('raycast://extensions/mattisssa/spotify-player/togglePlayPause?launchType=background')
     },
 
     // r = "Raycast"

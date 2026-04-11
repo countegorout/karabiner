@@ -92,6 +92,35 @@
                 ]
               },
               {
+                "description": "Map left_option → left_command on Monsgeek (when pressed alone)",
+                "type": "basic",
+                "from": {
+                  "key_code": "left_option",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_command"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 12625,
+                        "product_id": 16400,
+                        "is_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
                 "description": "change f7 to rewind",
                 "type": "basic",
                 "from": {
@@ -226,13 +255,13 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'v2RayTun.app'"
+                    "shell_command": "open -a 'Zen.app'"
                   }
                 ],
-                "description": "Open -a 'v2RayTun.app'",
+                "description": "Open -a 'Zen.app'",
                 "type": "basic",
                 "from": {
-                  "key_code": "2",
+                  "key_code": "b",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -250,13 +279,13 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Zen.app'"
+                    "shell_command": "open -a 'Firefox Developer Edition.app'"
                   }
                 ],
-                "description": "Open -a 'Zen.app'",
+                "description": "Open -a 'Firefox Developer Edition.app'",
                 "type": "basic",
                 "from": {
-                  "key_code": "b",
+                  "key_code": "n",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -346,10 +375,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Gemini Desktop.app'"
+                    "shell_command": "open -a 'ChatGPT.app'"
                   }
                 ],
-                "description": "Open -a 'Gemini Desktop.app'",
+                "description": "Open -a 'ChatGPT.app'",
                 "type": "basic",
                 "from": {
                   "key_code": "h",
@@ -370,10 +399,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'AyuGram.app'"
+                    "shell_command": "open -a 'Telegram.app'"
                   }
                 ],
-                "description": "Open -a 'AyuGram.app'",
+                "description": "Open -a 'Telegram.app'",
                 "type": "basic",
                 "from": {
                   "key_code": "t",
@@ -2194,29 +2223,6 @@
               {
                 "to": [
                   {
-                    "key_code": "play_or_pause"
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "p",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_c",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
                     "key_code": "rewind"
                   }
                 ],
@@ -2294,6 +2300,30 @@
                 "type": "basic",
                 "from": {
                   "key_code": "comma",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_c",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open raycast://extensions/mattisssa/spotify-player/togglePlayPause?launchType=background"
+                  }
+                ],
+                "description": "Open raycast://extensions/mattisssa/spotify-player/togglePlayPause?launchType=background",
+                "type": "basic",
+                "from": {
+                  "key_code": "p",
                   "modifiers": {
                     "optional": [
                       "any"
