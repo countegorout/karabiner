@@ -188,7 +188,7 @@ const rules: KarabinerRules[] = [
       f: app("Figma"),
       // "h" for help ;(
       h: app("Gemini Desktop"),
-      t: app("AyuGram"),
+      t: app("Telegram"),
       s: app("Spotify"),
       x: app("Nuage"),
       // "C" for cli
