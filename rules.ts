@@ -1,6 +1,6 @@
 import fs from "fs";
 import { KarabinerRules } from "./types";
-import { createHyperSubLayers, app, open, window, shell } from "./utils";
+import { createHyperSubLayers, app, open, window, layout } from "./utils";
 
 const rules: KarabinerRules[] = [
   // Define the Hyper key itself
@@ -102,18 +102,14 @@ const rules: KarabinerRules[] = [
 
     // TODO: This doesn't quite work yet.
     // l = "Layouts" via Raycast's custom window management
-    // l: {
-    //   // Coding layout
-    //   c: shell`
-    //     open -a "Visual Studio Code.app"
-    //     sleep 0.2
-    //     open -g "raycast://customWindowManagementCommand?position=topLeft&relativeWidth=0.5"
-
-    //     open -a "Terminal.app"
-    //     sleep 0.2
-    //     open -g "raycast://customWindowManagementCommand?position=topRight&relativeWidth=0.5"
-    //   `,
-    // },
+    l: {
+      // usage with your Mxstbr apps 
+      c: layout({apps: [
+          { name: "Zed", pos: "top-right-quarter" },
+          { name: "Terminal", pos: "top-left-quarter" },
+          { name: "Google Chrome", pos: "bottom-left-quarter" },
+        ]}),
+    },
 
     // w = "Window"
     w: {

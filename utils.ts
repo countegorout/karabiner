@@ -1,4 +1,4 @@
-import { To, KeyCode, Manipulator, KarabinerRules } from "./types";
+import { To, KeyCode, Manipulator, KarabinerRules, WindowManagementPosition } from "./types";
 
 /**
  * Custom way to describe a command in a layer
@@ -194,7 +194,7 @@ export function shell(
 /**
  * Shortcut for managing window sizing
  */
-export function window(name: string): LayerCommand {
+export function window(name: WindowManagementPosition): LayerCommand {
   return {
     to: [
       {
@@ -210,4 +210,37 @@ export function window(name: string): LayerCommand {
  */
 export function app(name: string): LayerCommand {
   return open(`-a '${name}.app'`);
+}
+
+/**
+ * Utility for laying out predetermined windows via raycast window manager (for free even)
+ */
+export function layout({
+  apps,
+  waitMs = 2000,
+}: {
+  apps: { name: string, pos: WindowManagementPosition}[];
+  waitMs?: number;
+}): LayerCommand {
+  const appEntries = apps.map(({ name, pos }) => [name, pos] as [string, WindowManagementPosition]);
+
+  const openAll = appEntries
+    .map(([name]) => `open -a '${name}.app'`)
+    .join(" && ");
+
+  const wait = `sleep ${waitMs / 1000}`;
+
+  const positionAll = appEntries
+    .map(
+      ([name, pos]) =>
+        `open -a '${name}.app' && sleep 0.3 && open -g 'raycast://extensions/raycast/window-management/${pos}'`
+    )
+    .join(" && ");
+
+  const fullCommand = `${openAll} && ${wait} && ${positionAll}`;
+
+  return {
+    to: [{ shell_command: fullCommand }],
+    description: `Layout: ${appEntries.map(([name]) => name).join(", ")}`,
+  };
 }
