@@ -1,6 +1,6 @@
 import fs from "fs";
 import { KarabinerRules } from "./types";
-import { createHyperSubLayers, app, open, windowManagement, shell } from "./utils";
+import { createHyperSubLayers, app, open, window, shell, layout } from "./utils";
 
 const rules: KarabinerRules[] = [
   // Define the Hyper key itself
@@ -87,33 +87,6 @@ const rules: KarabinerRules[] = [
         ],
       },
       {
-        description: "Map left_option → left_command on Monsgeek (when pressed alone)",
-        type: "basic",
-        from: {
-          key_code: "left_option",
-          modifiers: {
-            optional: ["any"]
-          }
-        },
-        to: [
-          {
-            key_code: "left_command"
-          }
-        ],
-        conditions: [
-          {
-            type: "device_if",
-            identifiers: [
-              {
-                vendor_id: 12625,
-                product_id: 16400,
-                is_keyboard: true
-              }
-            ]
-          }
-        ]
-      },
-      {
         description: "change f7 to rewind",
         type: "basic",
         from: {
@@ -198,27 +171,24 @@ const rules: KarabinerRules[] = [
     // ),
 
     // b = browse
-    // b: {
-    //   g: open("https://github.com/"),
-    //   y: open("https://youtube.com"),
-    //   // reva
-    //   r: open("https://mail.google.com/mail/u/0/#inbox"),
-    //   // a3dm
-    //   e: open("https://mail.google.com/mail/u/2/#inbox"),
-    //   m: open("https://mangalib.me")
-    // },
+    b: {
+      g: open("https://github.com/"),
+      y: open("https://youtube.com"),
+      // reva
+      r: open("https://mail.google.com/mail/u/0/#inbox"),
+      i: open("https://instagram.com"),
+    },
 
     // o = "Open" applications
     o: {
       // "b" for browser
       b: app("Zen"),
-      n: app("Firefox Developer Edition"),
       v: app("Visual Studio Code"),
       d: app("Discord"),
       f: app("Figma"),
       // "h" for help ;(
-      h: app("ChatGPT"),
-      t: app("Telegram"),
+      h: app("Gemini Desktop"),
+      t: app("AyuGram"),
       s: app("Spotify"),
       x: app("Nuage"),
       // "C" for cli
@@ -234,18 +204,15 @@ const rules: KarabinerRules[] = [
 
     // TODO: This doesn't quite work yet.
     // l = "Layouts" via Raycast's custom window management
-    // l: {
-    //   // Coding layout
-    //   c: shell`
-    //     open -a "Visual Studio Code.app"
-    //     sleep 0.2
-    //     open -g "raycast://customWindowManagementCommand?position=topLeft&relativeWidth=0.5"
-
-    //     open -a "Terminal.app"
-    //     sleep 0.2
-    //     open -g "raycast://customWindowManagementCommand?position=topRight&relativeWidth=0.5"
-    //   `,
-    // },
+    l: {
+      // Coding layout
+      c: layout({
+        apps: [
+          { name: "Visual Studio Code", pos: "left-half" },
+          { name: "Claude", pos: "right-half" },
+        ]
+      })
+    },
 
     // w = "Window" via raycast windown manager
     w: {
@@ -258,20 +225,20 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
-      c: windowManagement("center"),
-      r: windowManagement("restore"),
-      u: windowManagement("previous-display"),
-      o: windowManagement("next-display"),
-      i: windowManagement("top-half"),
-      j: windowManagement("left-half"),
-      l: windowManagement("right-half"),
-      k: windowManagement("bottom-half"),
-      f: windowManagement("maximize"),
-      g: windowManagement("reasonable-size"),
-      y: windowManagement("maximize-height"),
-      m: windowManagement("toggle-fullscreen"),
-      hyphen: windowManagement("make-smaller"),
-      equal_sign: windowManagement("make-larger"),
+      c: window("center"),
+      r: window("restore"),
+      u: window("previous-display"),
+      o: window("next-display"),
+      i: window("top-half"),
+      j: window("left-half"),
+      l: window("right-half"),
+      k: window("bottom-half"),
+      f: window("maximize"),
+      g: window("reasonable-size"),
+      y: window("maximize-height"),
+      m: window("toggle-fullscreen"),
+      hyphen: window("make-smaller"),
+      equal_sign: window("make-larger"),
       comma: {
         description: "Window: Previous Tab",
         to: [
@@ -432,8 +399,8 @@ const rules: KarabinerRules[] = [
       },
     },
 
-    // b = bluetooth
-    b: {
+    // t = toothpick (raycast bluetooth managing extension)
+    t: {
       1: open(
         "raycast://extensions/VladCuciureanu/toothpick/toggle-favorite-device-1?launchType=background"
       ),
@@ -492,6 +459,9 @@ const rules: KarabinerRules[] = [
         ],
       },
       o: app("Shottr"),
+      p: {
+        to: [{ key_code: "play_or_pause" }]
+      },
       b: {
         to: [{ key_code: "rewind" }]
       },
@@ -502,8 +472,6 @@ const rules: KarabinerRules[] = [
       l: open("raycast://extensions/mattisssa/spotify-player/like?launchType=background"),
       // change spotify output device
       comma: open("raycast://extensions/mattisssa/spotify-player/devices"),
-      // toggle play/pause in spotify
-      p: open('raycast://extensions/mattisssa/spotify-player/togglePlayPause?launchType=background')
     },
 
     // r = "Raycast"
