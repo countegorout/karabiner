@@ -95,7 +95,8 @@ const rules: KarabinerRules[] = [
       // "P" for password
       p: app("Bitwarden"),
       comma: app("System Settings"),
-      grave_accent_and_tilde: app("Activity Monitor")
+      grave_accent_and_tilde: app("Vorssaint")
+      // grave_accent_and_tilde: app("Activity Monitor")
     },
 
     // TODO: This doesn't quite work yet.
@@ -158,9 +159,10 @@ const rules: KarabinerRules[] = [
       2: open("raycast://extensions/benvp/audio-device/use-combo2?launchType=background"),
       // realme Buds Air7 Pro
       3: open("raycast://extensions/benvp/audio-device/use-combo3?launchType=background"),
-      o: keyCombination({ description: "cycle through output devices via Vorssaint.app", key_code: "s", modifiers: ["left_option", "left_command", "left_control"] }),
+      o: keyCombination({ description: "Cycle through output devices via Vorssaint.app", key_code: "s", modifiers: ["left_option", "left_command", "left_control"] }),
       // bluetooth connection managing
-      b: open("raycast://extensions/VladCuciureanu/toothpick/manage-bluetooth-connections")
+      b: open("raycast://extensions/VladCuciureanu/toothpick/manage-bluetooth-connections"),
+      grave_accent_and_tilde: app("Activity monitor")
     },
 
     // v = "moVe" which isn't "m" because we want it to be on the left hand
@@ -186,16 +188,14 @@ const rules: KarabinerRules[] = [
     // c = Capture using shortcuts assigned in shottr
     // c = Musi"c"
     c: {
-      s: keyCombination({ description: "Fullscreen", key_code: "equal_sign", modifiers: ["left_command", "left_option", "left_control"] }),
-      a: keyCombination({ description: "Fullscreen", key_code: "hyphen", modifiers: ["left_command", "left_option", "left_control"] }),
-      d: keyCombination({ description: "Scrolling screenshot via Shottr", key_code: "0", modifiers: ["left_command", "left_shift"] }),
-      t: keyCombination({ description: "Text recognition via Shottr", key_code: "9", modifiers: ["left_command", "left_shift"] }),
+      s: keyCombination({ description: "Fullscreen screenshot", key_code: "equal_sign", modifiers: ["left_command", "left_option", "left_control", "left_shift"] }),
+      a: keyCombination({ description: "Area screenshot", key_code: "hyphen", modifiers: ["left_command", "left_option", "left_control", "left_shift"] }),
+      d: keyCombination({ description: "Scrolling screenshot via Shottr", key_code: "2", modifiers: ["left_command", "left_option", "left_control", "left_shift"] }),
+      t: keyCombination({ description: "Text/QR recognition via Shottr", key_code: "9", modifiers: ["left_command", "left_option", "left_control", "left_shift"] }),
       // capture active window
-      w: keyCombination({ description: "Take a picture of the active window", key_code: "1", modifiers: ["left_command", "left_shift", "left_option"] }),
-      o: keyCombination({ description: "Open screenshot editor", key_code: "8", modifiers: ["left_command", "left_option", "left_control"] }),
-      p: bareKey({ key_code: "play_or_pause" }),
-      b: bareKey({ key_code: "rewind" }),
-      n: bareKey({ key_code: "fastforward" }),
+      w: keyCombination({ description: "Take a picture of the active window", key_code: "1", modifiers: ["left_command", "left_option", "left_control", "left_shift"] }),
+      o: keyCombination({ description: "Open last screenshot editor via Vorssaint", key_code: "8", modifiers: ["left_command", "left_option", "left_control", "left_shift"] }),
+      p: keyCombination({ description: "Open clipboard image editor via Vorssaint", key_code: "7", modifiers: ["left_command", "left_option", "left_control", "left_shift"] }),
       // like now playing song in spotify
       l: open("raycast://extensions/mattisssa/spotify-player/like?launchType=background"),
       // change spotify output device
