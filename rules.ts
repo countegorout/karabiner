@@ -141,7 +141,7 @@ const rules: KarabinerRules[] = [
       i: bareKey({ key_code: "display_brightness_increment" }),
       k: bareKey({ key_code: "display_brightness_decrement" }),
       l: keyCombination({ description: "Lock screen", key_code: "q", modifiers: ["right_control", "right_command"] }),
-      m: bareKey({ key_code: "mission_control" }),
+      m: keyCombination({ description: "Toggle microphone mute", key_code: "m", modifiers: ["left_command", "left_control", 'left_option'] }),
       e: keyCombination({ description: "Exposé", key_code: "down_arrow", modifiers: ["right_control"] }),
       // "D"o not disturb toggle
       d: open(
@@ -151,7 +151,7 @@ const rules: KarabinerRules[] = [
       // test internet speed
       t: open("raycast://extensions/tonka3000/speedtest/index"),
       // apps
-      a: open("-a Launchpad"),
+      a: bareKey({ key_code: "mission_control" }),
       // set output devices via Set Audio Device[https://github.com/raycast/extensions/blob/fc737c076e1698e51f0378cd46293358e019ee91/extensions/audio-device/README.md] raycast extension
       // Macbook Pro Speakers
       1: open("raycast://extensions/benvp/audio-device/use-combo1?launchType=background"),
