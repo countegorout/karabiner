@@ -1,4 +1,5 @@
-import fs from "fs";
+// @ts-ignore
+import fs from "fs"; 
 import { KarabinerRules } from "./types";
 import { createHyperSubLayers, app, open, window, shell } from "./utils";
 
@@ -126,8 +127,8 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
-      y: window("previous-display"),
-      o: window("next-display"),
+      y: window("move-to-previous-display"),
+      o: window("move-to-next-display"),
       k: window("top-half"),
       j: window("bottom-half"),
       h: window("left-half"),
@@ -362,6 +363,7 @@ fs.writeFileSync(
       profiles: [
         {
           name: "Default",
+          virtual_hid_keyboard: { "keyboard_type_v2": "ansi" }, // so Karabiner app doesn't pop up in the dock on rebuild
           complex_modifications: {
             rules,
           },

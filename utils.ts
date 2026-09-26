@@ -1,4 +1,4 @@
-import { To, KeyCode, Manipulator, KarabinerRules } from "./types";
+import { To, KeyCode, Manipulator, KarabinerRules, WindowManagementPosition } from "./types";
 
 /**
  * Custom way to describe a command in a layer
@@ -194,7 +194,7 @@ export function shell(
 /**
  * Shortcut for managing window sizing
  */
-export function window(name: string): LayerCommand {
+export function window(name: WindowManagementPosition): LayerCommand {
   return {
     to: [
       {
