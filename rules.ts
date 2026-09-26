@@ -80,7 +80,7 @@ const rules: KarabinerRules[] = [
       b: app("Zen"),
       n: app("Firefox Developer Edition"),
       v: app("Visual Studio Code"),
-      d: app("Discord"),
+      d: app("Vesktop"),
       f: app("Figma"),
       // "h" for help ;(
       h: app("Claude"),
@@ -116,8 +116,8 @@ const rules: KarabinerRules[] = [
       h: keyCombination({ description: "Window: Hide", key_code: "h", modifiers: ["right_command"] }),
       c: window("center"),
       r: window("restore"),
-      u: window("previous-display"),
-      o: window("next-display"),
+      u: window("move-to-previous-display"),
+      o: window("move-to-next-display"),
       i: window("top-half"),
       j: window("left-half"),
       l: window("right-half"),
@@ -147,7 +147,7 @@ const rules: KarabinerRules[] = [
       d: open(
         `raycast://extensions/yakitrak/do-not-disturb/toggle?launchType=background`
       ),
-      c: open("raycast://extensions/raycast/system/open-camera"),
+      c: open("raycast://extensions/raycast/raycast/open-camera"),
       // test internet speed
       t: open("raycast://extensions/tonka3000/speedtest/index"),
       // apps
