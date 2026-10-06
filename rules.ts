@@ -1,6 +1,6 @@
 import fs from "fs";
 import type { KarabinerRules } from "./types";
-import { createHyperSubLayers, app, open, window, layout, keyCombination, bareKey, changeKeyActionOnExternalKeyboard, changeKeyActionUnlessHyperHeld, changeKeyActionWhenHyperHeld, changeKeyActionWithModifiers } from "./utils";
+import { createHyperSubLayers, app, open, window, layout, keyCombination, bareKey, changeKeyActionOnExternalKeyboard, changeKeyActionUnlessHyperHeld, changeKeyActionWhenHyperHeld, changeKeyActionWithModifiers, browseFromClipboard } from "./utils";
 
 const EXTERNAL_KEYBOARD = {
   name: "Monsgeek Keyboard",
@@ -48,8 +48,8 @@ const rules: KarabinerRules[] = [
       },
     ],
   },
-  changeKeyActionOnExternalKeyboard({ from_key_code: "left_command", to_key_code: "left_option", device: { name: EXTERNAL_KEYBOARD.name, vendor_id: EXTERNAL_KEYBOARD.vendor_id, product_id: EXTERNAL_KEYBOARD.product_id } }),
-  changeKeyActionOnExternalKeyboard({ from_key_code: "left_option", to_key_code: "left_command", device: { name: EXTERNAL_KEYBOARD.name, vendor_id: EXTERNAL_KEYBOARD.vendor_id, product_id: EXTERNAL_KEYBOARD.product_id } }),
+  // changeKeyActionOnExternalKeyboard({ from_key_code: "left_command", to_key_code: "left_option", device: { name: EXTERNAL_KEYBOARD.name, vendor_id: EXTERNAL_KEYBOARD.vendor_id, product_id: EXTERNAL_KEYBOARD.product_id } }),
+  // changeKeyActionOnExternalKeyboard({ from_key_code: "left_option", to_key_code: "left_command", device: { name: EXTERNAL_KEYBOARD.name, vendor_id: EXTERNAL_KEYBOARD.vendor_id, product_id: EXTERNAL_KEYBOARD.product_id } }),
   changeKeyActionUnlessHyperHeld({ from_key_code: "f7", to_key_code: "rewind" }),
   changeKeyActionUnlessHyperHeld({ from_key_code: "f8", to_key_code: "play_or_pause" }),
   changeKeyActionUnlessHyperHeld({ from_key_code: "f9", to_key_code: "fastforward" }),
@@ -72,6 +72,7 @@ const rules: KarabinerRules[] = [
       // reva
       r: open("https://mail.google.com/mail/u/0/#inbox"),
       i: open("https://instagram.com"),
+      c: browseFromClipboard()
     },
 
     // o = "Open" applications
@@ -227,8 +228,27 @@ fs.writeFileSync(
           complex_modifications: {
             rules,
           },
-        },
-      ],
+          devices: [
+                {
+                    identifiers: {
+                        is_keyboard: true,
+                        product_id: 16400,
+                        vendor_id: 12625
+                    },
+                    simple_modifications: [
+                        {
+                            from: { "key_code": "left_option" },
+                            to: [{ "key_code": "left_command" }]
+                        },
+                        {
+                            from: { "key_code": "left_command" },
+                            to: [{ "key_code": "left_option" }]
+                        }
+                    ]
+                }
+            ],
+          }
+      ]   
     },
     null,
     2

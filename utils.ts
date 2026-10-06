@@ -167,6 +167,15 @@ export function open(...what: string[]): LayerCommand {
 }
 
 /**
+ * Opens the current clipboard text with the default browser/application.
+ */
+export function browseFromClipboard(): LayerCommand {
+  const clipboardText = "$(pbpaste | tr ' ' '+')";
+
+  return open("https://www.google.com/search?q=" + clipboardText);
+}
+
+/**
  * Utility function to create a LayerCommand from a tagged template literal
  * where each line is a shell command to be executed.
  */
