@@ -169,10 +169,19 @@ export function open(...what: string[]): LayerCommand {
 /**
  * Opens the current clipboard text with the default browser/application.
  */
-export function browseFromClipboard(): LayerCommand {
+export function searchGoogleFromClipboard(): LayerCommand {
   const clipboardText = "$(pbpaste | tr ' ' '+')";
 
   return open("https://www.google.com/search?q=" + clipboardText);
+}
+
+/**
+ * Opens the current clipboard text with the default browser/application.
+ */
+export function openDictionaryFromClipboard(): LayerCommand {
+  const clipboardText = "$(pbpaste)";
+
+  return open("https://www.merriam-webster.com/dictionary/" + clipboardText);
 }
 
 /**
